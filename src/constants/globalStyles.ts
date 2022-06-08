@@ -5,6 +5,7 @@ export const styleConstants = {
   cardBackground: '#fff',
   borderRadius: 8,
   secondaryText: '#696990',
+  border: '#dddde8',
 };
 
 export default StyleSheet.create({
@@ -19,10 +20,28 @@ export default StyleSheet.create({
     marginHorizontal: 'auto',
   },
   centerList: {
-    flex: 1,
     width: '100%',
     maxWidth: 500,
     marginHorizontal: 'auto',
   },
+  list: {
+    width: '100%',
+    maxWidth: 500,
+  },
+  center: {
+    marginHorizontal: 'auto',
+  },
+  padding: {
+    padding: 24,
+  },
   right: {},
+  header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: styleConstants.secondaryText,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
 });

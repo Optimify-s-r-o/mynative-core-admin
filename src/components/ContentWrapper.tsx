@@ -1,10 +1,22 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleProp, View, ViewStyle } from 'react-native';
 import globalStyles from '../constants/globalStyles';
 
-const ContentWrapper = ({ children }: { children?: React.ReactNode }) => (
+const ContentWrapper = ({
+  children,
+  stickyIndices,
+  styles = [],
+}: {
+  children?: React.ReactNode;
+  stickyIndices?: number[];
+  styles?: StyleProp<ViewStyle>[];
+}) => (
   <SafeAreaView>
-    <ScrollView style={globalStyles.container} contentContainerStyle={globalStyles.content}>
+    <ScrollView
+      style={[globalStyles.container, ...styles]}
+      contentContainerStyle={globalStyles.content}
+      stickyHeaderIndices={stickyIndices}
+    >
       {children}
     </ScrollView>
   </SafeAreaView>

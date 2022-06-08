@@ -18,11 +18,17 @@ type ScreenListItem = {
   title: string;
 };
 
-const ListItem = ({ screen }: { screen: ScreenListItem }) => {
+const ListItem = ({
+  navigation,
+  screen,
+}: {
+  navigation: StackNavigationProp<MainStackParams, 'screens'>;
+  screen: ScreenListItem;
+}) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        console.log('asd');
+        navigation.navigate('edit-screen', { name: screen.name });
       }}
       style={styles.itemContainer}
     >
@@ -36,8 +42,7 @@ const ListItem = ({ screen }: { screen: ScreenListItem }) => {
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-export const Screens = (props: Props) => {
-  const navigation = useNavigation();
+export const Screens = ({ navigation }: Props) => {
   const screens: ScreenListItem[] = [
     {
       name: 'test',
@@ -48,7 +53,9 @@ export const Screens = (props: Props) => {
       title: 'Welcome!',
     },
   ];
-  const renderItem = ({ item }: { item: ScreenListItem }) => <ListItem screen={item} />;
+  const renderItem = ({ item }: { item: ScreenListItem }) => (
+    <ListItem navigation={navigation} screen={item} />
+  );
 
   return (
     <ContentWrapper>
@@ -56,7 +63,7 @@ export const Screens = (props: Props) => {
         <Gap gap={24}>
           <Button
             onPress={() => {
-              navigation.dispatch(DrawerActions.jumpTo('create-screen'));
+              navigation.navigate('create-screen');
             }}
             align="flex-end"
             type="outline"

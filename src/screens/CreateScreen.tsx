@@ -11,12 +11,13 @@ import { Button } from '../components/Button';
 import { DropdownInput } from '../components/DropdownInput';
 
 type Props = {
-  navigation: StackNavigationProp<MainStackParams, 'dashboard'>;
+  navigation: StackNavigationProp<MainStackParams, 'create-screen'>;
 };
 
 export const CreateScreen = (props: Props) => {
   const [title, setTitle] = useState('');
   const [name, setName] = useState('');
+  const [navigation, setNavigation] = useState<string | null>(null);
   const [template, setTemplate] = useState<string | null>('none');
   const [screen, setScreen] = useState<string | null>(null);
 
@@ -39,6 +40,22 @@ export const CreateScreen = (props: Props) => {
             value={name}
             onChange={setName}
             description="Will NOT be visible to the users in your map. It is used as unique identifier for the routing purposes."
+          />
+          <DropdownInput
+            label="Navigation"
+            options={[
+              {
+                label: 'Portal',
+                value: 'Portal',
+              },
+              {
+                label: 'Unauthorized',
+                value: 'Auth',
+              },
+            ]}
+            placeholder={{}}
+            onChange={setNavigation}
+            description=""
           />
           <DropdownInput
             label="Template"
@@ -79,7 +96,7 @@ export const CreateScreen = (props: Props) => {
             />
           )}
           <Button onPress={() => {}} align="flex-end">
-            Save changes
+            Create screen
           </Button>
         </Gap>
       </View>

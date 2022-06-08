@@ -9,12 +9,16 @@ import { Settings } from '../screens/Settings';
 import { Screens } from '../screens/Screens';
 import { Themes } from '../screens/Themes';
 import { CreateScreen } from '../screens/CreateScreen';
+import { EditScreen } from '../screens/EditScreen';
 
 export type MainStackParams = {
   dashboard: undefined;
   assets: undefined;
   screens: undefined;
   'create-screen': undefined;
+  'edit-screen': {
+    name: string;
+  };
   plugins: undefined;
   templates: undefined;
   settings: undefined;
@@ -38,6 +42,12 @@ export const Main = () => {
         name="create-screen"
         component={CreateScreen}
         options={{ title: 'Create screen', drawerItemStyle: { display: 'none' } }}
+      />
+      <Drawer.Screen
+        name="edit-screen"
+        component={EditScreen}
+        options={{ title: 'Edit screen', drawerItemStyle: { display: 'none' } }}
+        getId={({ params }: any) => params.name}
       />
       <Drawer.Screen name="assets" component={Assets} options={{ title: 'Assets' }} />
       <Drawer.Group>
