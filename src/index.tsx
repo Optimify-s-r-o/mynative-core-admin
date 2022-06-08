@@ -8,7 +8,7 @@ export default function App() {
   return (
     <>
       <StatusBar style="auto" />
-      <NavigationContainer>
+      <NavigationContainer linking={{ enabled: true }}>
         <Main />
       </NavigationContainer>
     </>

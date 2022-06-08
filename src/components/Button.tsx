@@ -6,18 +6,20 @@ import {
   StyleProp,
   TextStyle,
   ViewStyle,
+  FlexAlignType,
 } from 'react-native';
 
 import colors from '../constants/colors';
+import { styleConstants } from '../constants/globalStyles';
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.primary,
-    paddingVertical: 14,
-    borderRadius: 6,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: styleConstants.borderRadius,
     borderWidth: 1,
     borderColor: colors.primary,
-    marginVertical: 7,
   },
   containerOutline: {
     backgroundColor: 'transparent',
@@ -27,7 +29,7 @@ const styles = StyleSheet.create({
   text: {
     color: colors.white,
     alignSelf: 'center',
-    fontSize: 18,
+    fontSize: 12,
     fontWeight: '500',
   },
   textOutline: {
@@ -39,14 +41,11 @@ type ButtonProps = {
   onPress: () => void;
   children: string;
   type?: 'outline';
+  align?: FlexAlignType;
 };
 
-export const Button = ({
-  onPress = () => {},
-  children = '',
-  type,
-}: ButtonProps) => {
-  const containerStyles: StyleProp<ViewStyle>[] = [styles.container];
+export const Button = ({ onPress = () => {}, children = '', type, align }: ButtonProps) => {
+  const containerStyles: StyleProp<ViewStyle>[] = [styles.container, { alignSelf: align }];
   const textStyles: StyleProp<TextStyle>[] = [styles.text];
 
   if (type === 'outline') {
