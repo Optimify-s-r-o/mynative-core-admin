@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { MainStackParams } from '../navigation/Main';
+import React, { useEffect, useState } from 'react';
+import { Text, View } from 'react-native';
+
+import { AssetInput } from '../components/AssetInput';
+import { Button } from '../components/Button';
 import ContentWrapper from '../components/ContentWrapper';
-import { View, Text } from 'react-native';
-import globalStyles from '../constants/globalStyles';
+import { Divider } from '../components/Divider';
+import { DropdownInput } from '../components/DropdownInput';
 import { Gap } from '../components/Gap';
 import { TextInput } from '../components/TextInput';
-import { Button } from '../components/Button';
-import { DropdownInput } from '../components/DropdownInput';
-import { Divider } from '../components/Divider';
-import { AssetInput } from '../components/AssetInput';
+import globalStyles from '../constants/globalStyles';
+import { MainStackParams } from '../navigation/Main';
 
 type Props = {
   navigation: StackNavigationProp<MainStackParams, 'edit-screen'>;
@@ -20,10 +21,14 @@ export const EditScreen = (props: Props) => {
   const [name, setName] = useState(props.route?.params?.name);
   const [navigation, setNavigation] = useState<string | null>(null);
 
-  const [editable1, setEditable1] = useState('foo');
-  const [editable2, setEditable2] = useState('bar');
-  const [editableAsset, setEditableAsset] = useState('https://reactnavigation.org/img/spiro.svg');
-  const [editable3, setEditable3] = useState('');
+  const [editable1, setEditable1] = useState('Welcome to the World of Languages');
+  const [editable2, setEditable2] = useState('E-mail');
+  const [editableAsset, setEditableAsset] = useState('https://i.ibb.co/hLxBKjt/flatillustration.jpg');
+  const [editable3, setEditable3] = useState('Password');
+  const [editable4, setEditable4] = useState('Sign In');
+  const [editable5, setEditable5] = useState('Forgotten password?');
+  const [editable6, setEditable6] = useState('Sign Up');
+  const [editable7, setEditable7] = useState('Verification');
 
   return (
     <ContentWrapper>
@@ -34,7 +39,7 @@ export const EditScreen = (props: Props) => {
               label="Title"
               value={title}
               onChange={setTitle}
-              description="Will be visible to users in your app."
+              description="Will be visible to users in your app. Leave empty if you want to show nothing."
             />
             <TextInput
               label="Unique name"
@@ -61,10 +66,13 @@ export const EditScreen = (props: Props) => {
             />
             <Divider />
             <Text style={globalStyles.header}>Editables</Text>
-            <TextInput label="Editable 1" value={editable1} onChange={setEditable1} />
-            <TextInput label="Editable 2" value={editable2} onChange={setEditable2} />
             <AssetInput label="Editable asset" value={editableAsset} onChange={setEditableAsset} />
-            <TextInput label="Editable 3" value={editable3} onChange={setEditable3} />
+            <TextInput label="Editable 1 - Title" value={editable1} onChange={setEditable1} />
+            <TextInput label="Editable 2 - Email" value={editable2} onChange={setEditable2} />
+            <TextInput label="Editable 3 - SignIn Button" value={editable3} onChange={setEditable3} />
+            <TextInput label="Editable 4 - Forgotten Password" value={editable4} onChange={setEditable4} />
+            <TextInput label="Editable 5 - Sign Up" value={editable5} onChange={setEditable5} />
+            <TextInput label="Editable 6 - Sign Up Verification" value={editable6} onChange={setEditable6} />
           </Gap>
         </View>
 
